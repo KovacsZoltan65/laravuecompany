@@ -15,7 +15,10 @@ class DepartmentController extends Controller
     {
         $departments = Department::all();
         
-        return Inertia::render('Departments/index', ['departments' => $departments]);
+        return Inertia::render(
+            'Departments/index', 
+            ['departments' => $departments]
+        );
     }
 
     /**
@@ -44,17 +47,17 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Department $department)
-    {
-        //
-    }
+    public function show(Department $department){}
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Department $department)
     {
-        return Inertia::render('Departments/Edit', ['department' => $department]);
+        return Inertia::render(
+            'Departments/Edit', 
+            ['department' => $department]
+        );
     }
 
     /**
