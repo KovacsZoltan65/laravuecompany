@@ -34,10 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
+    // Irodák
     Route::resource('departments', \App\Http\Controllers\DepartmentController::class);
+    // Dolgozók
     Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
-    
+    // Grafikonok
     Route::get('/graphic', [\App\Http\Controllers\EmployeeController::class, 'EmployeeByDepartment'])->name('graphic');
+    // Riportok
     Route::get('/reports', [\App\Http\Controllers\EmployeeController::class, 'reports'])->name('reports');
 });
 
