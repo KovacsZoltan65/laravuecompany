@@ -1,0 +1,11 @@
+https://www.youtube.com/watch?v=sQwDLrleegA&ab_channel=ProgramandoconDanCruise
+
+composer create-project laravel/laravel --prefer-dist
+
+composer require laravel/breeze --dev
+php artisan breeze:install vue
+
+npm install @fortawesome/fontawesome-free sweetalert2 @ocrv/vue-tailwind-pagination vue-chartjs chart.js datatables.net datatables.net-vue3 datatables.net-responsive-dt datatables.net-buttons jszip pdfmake
+
+php artisan make:model Department -mcrf
+php artisan make:model Employee -mcrf
