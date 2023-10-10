@@ -10,4 +10,8 @@ class Employee extends Model
     use HasFactory;
     
     protected $fillable = ['name', 'email', 'phone', 'department_id'];
+    
+    public function department(){
+        return $this->hasOne(Department::class, 'department_id', 'id');
+    }
 }
