@@ -12,6 +12,6 @@ class Employee extends Model
     protected $fillable = ['name', 'email', 'phone', 'department_id'];
     
     public function department(){
-        return $this->hasOne(Department::class, 'department_id', 'id');
+        return $this->hasOne(Department::class, 'id', 'department_id');
     }
 }
