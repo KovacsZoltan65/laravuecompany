@@ -1,5 +1,5 @@
 <script setup>
-    import { Head, useForm } from '@inertiajs/vue3';
+    import { Head, useForm, Link } from '@inertiajs/vue3';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import InputError from '../../Components/InputError.vue';
     import InputLabel from '../../Components/InputLabel.vue';
@@ -30,9 +30,16 @@
                                    type="text" autofocus required></TextInput>
                         <InputError :message="form.errors.name" 
                                     class="mt-2"></InputError>
+                        
                         <PrimaryButton :disabled="form.processing">
                             <i class="fa-solid fa-save"></i> Save
                         </PrimaryButton>
+
+                        <Link :href="route('departments.index')"
+                              :class="'px-4 py-2 bg-yellow-400 text-white border rounded-md font-semibold text-xs'">
+                            <i class="fa-solid fa-arrow-left"></i> Back
+                        </Link>
+
                     </form>
                 </div>
             </div>
