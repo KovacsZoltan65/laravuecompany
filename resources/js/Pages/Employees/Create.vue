@@ -1,10 +1,11 @@
 <script setup>
-    import { Head, useForm } from '@inertiajs/vue3';
+    import { Head, useForm, Link } from '@inertiajs/vue3';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import InputError from '../../Components/InputError.vue';
     import InputLabel from '../../Components/InputLabel.vue';
-    import PrimaryButton from '../../Components/PrimaryButton.vue';
     import TextInput from '../../Components/TextInput.vue';
+    import PrimaryButton from '../../Components/PrimaryButton.vue';
+    import SecondaryButton from '../../Components/SecondaryButton.vue';
 
     const form = useForm({
         name: '',
@@ -44,6 +45,11 @@
                                     class="mt-2"></InputError>
 
                         <!-- BUTTON -->
+                        <Link :href="route('employees.index')"
+                              :class="'px-4 py-2 bg-yellow-400 text-white border rounded-md font-semibold text-xs'">
+                            <i class="fa-solid fa-arrow-left"></i> Back
+                        </Link>
+                        
                         <PrimaryButton :disabled="form.processing">
                             <i class="fa-solid fa-save"></i> Save
                         </PrimaryButton>

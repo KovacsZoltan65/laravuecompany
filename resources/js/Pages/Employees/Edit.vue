@@ -1,5 +1,5 @@
 <script setup>
-    import { Head, useForm } from '@inertiajs/vue3';
+    import { Head, useForm, Link } from '@inertiajs/vue3';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import InputError from '../../Components/InputError.vue';
     import InputLabel from '../../Components/InputLabel.vue';
@@ -42,8 +42,20 @@
                                    type="text" required></TextInput>
                         <InputError :message="form.errors.email" 
                                     class="mt-2"></InputError>
+
+                        <!-- PHONE -->
+                        <InputLabel for="phone" :value="form.phone">Phone</InputLabel>
+                        <TextInput id="phone" v-model="form.phone" 
+                                   class="mt-1 block w-full" 
+                                   type="text" required></TextInput>
+                        <InputError :message="form.errors.phone" 
+                                    class="mt-2"></InputError>
+                    
                         <!-- BUTTONS -->
-                        <!-- BUTTONS -->
+                        <Link :href="route('employees.index')"
+                              :class="'px-4 py-2 bg-yellow-400 text-white border rounded-md font-semibold text-xs'">
+                            <i class="fa-solid fa-arrow-left"></i> Back
+                        </Link>
                         <PrimaryButton :disabled="form.processing">
                             <i class="fa-solid fa-save"></i> Save
                         </PrimaryButton>
