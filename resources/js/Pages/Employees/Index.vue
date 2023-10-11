@@ -1,18 +1,63 @@
 <script setup>
     import { Head, Link, useForm } from '@inertiajs/vue3';
+    import { nextTick, ref } from 'vue';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-    import DangerButton from '../../Components/DangerButton.vue';
     import Swal from 'sweetalert2';
+    import VueTailwindPagination from '@ocrv/vue-tailwind-pagination';
+    
+    import InputError from '@/Components/InputError.vue';
+    import InputLabel from '@/Components/InputLabel.vue';
+    import TextInput from '@/Components/TextInput.vue';
+    import SelectInput from '@/Components/SelectInput.vue';
+
+    import PrimaryButton from '@/Components/PrimaryButton.vue';
+    import DangerButton from '@/Components/DangerButton.vue';
+    import SecondaryButton from '@/Components/SecondaryButton.vue';
+    import WarningButton from '@/Components/WarningButton.vue';
+
+    import Model from '@/Components/Model.vue';
+
+    const nameInput = ref(null);
+    const modal = ref(false);
+    const title = ref('');
+    const operation = ref(1);
+    const id = ref('');
 
     const props = defineProps({
-        employees: {
-            type: Object
-        },
+        employees: {type: Object},
+        departments: {type: Object},
     });
 
     const form = useForm({
-        id: null,
+        name: '', email: '', phone: '', department_id: '',
     });
+
+    const formPage = useForm({});
+
+    const onPageClick = (event) => {
+        formPage.get(route('employees.index', {page: event}));
+    };
+
+    const openModal = (op, name, email, phone, department, employee) => {
+        modal.value = true;
+        nextTick(() => nameInput.value.focus());
+        operation.value = op;
+        id.value = employee;
+        if(op == 1){
+            title.value = 'Create Employee';
+        }else{
+            title.value = 'Edit Employee';
+            form.name = name;
+            form.email = email;
+            form.phone = phone;
+            form.department_id = department;
+        }
+    };
+
+    const clseModal = () => {
+        modal.value = false;
+        form.reset();
+    };
 
     const deleteEmployee = (id, name) => {
         const alerta = Swal.mixin({
