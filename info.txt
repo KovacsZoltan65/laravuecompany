@@ -9,3 +9,7 @@ npm install @fortawesome/fontawesome-free sweetalert2 @ocrv/vue-tailwind-paginat
 
 php artisan make:model Department -mcrf
 php artisan make:model Employee -mcrf
+
+admin
+admin@company.com
+password
