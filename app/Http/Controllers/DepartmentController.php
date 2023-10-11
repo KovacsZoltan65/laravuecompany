@@ -16,7 +16,7 @@ class DepartmentController extends Controller
         $departments = Department::all();
         
         return Inertia::render(
-            'Departments/index', 
+            'Departments/Index', 
             ['departments' => $departments]
         );
     }
