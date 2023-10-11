@@ -16,7 +16,8 @@ class EmployeeController extends Controller
     public function index()
     {
         // Dolgozók lekérése
-        $employees = Employee::all();
+        //$employees = Employee::all();
+        $employees = Employee::with('department')->get();
         /*
         $employees = Employee::select(
             'employees.id', 
