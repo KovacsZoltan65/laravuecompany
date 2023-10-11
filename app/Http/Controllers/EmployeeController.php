@@ -16,6 +16,8 @@ class EmployeeController extends Controller
     public function index()
     {
         // Dolgozók lekérése
+        $employees = Employee::all();
+        /*
         $employees = Employee::select(
             'employees.id', 
             'employees.name', 
@@ -25,9 +27,11 @@ class EmployeeController extends Controller
             'departments.name as department')
             ->join('departments', 'departments.id', '=', 'employees.department_id')
             ->paginate(10);
+        */
         // Irodák lekérése
         $departments = Department::all();
-        
+        //\Log::info(print_r($employees, true));
+        //\Log::info(print_r($departments, true));
         return Inertia::render('Employees/Index', [
             'employees' => $employees, 
             'departments' => $departments
