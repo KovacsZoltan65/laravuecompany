@@ -14,7 +14,7 @@
         id: null,
     });
 
-    const deleteDepartment = (id, name) => {
+    const deleteEmployee = (id, name) => {
         const alerta = Swal.mixin({
             buttonsStyling: true
         });
@@ -60,18 +60,24 @@
                             <th class="px-4 py-4">NAME</th>
                             <th class="px-4 py-4">EMAIL</th>
                             <th class="px-4 py-4"></th>
+                            <th class="px-4 py-4"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="emp, i in employees" :key="i">
+                        <tr v-for="emp, i in employees" :key="emp.id">
                             <td class="border border-gray-400 px-4 py-4">{{ (i+1) }}</td>
-                            <td class="border border-gray-400 px-4 py-4">{{ emp }}</td>
-                            <td class="border border-gray-400 px-4 py-4">{{ emp }}</td>
+                            <td class="border border-gray-400 px-4 py-4">{{ emp.name }}</td>
+                            <td class="border border-gray-400 px-4 py-4">{{ emp.email }}</td>
                             <td class="border border-gray-400 px-4 py-4">
-                                
+                                <Link :href="route('employees.edit', emp.id)"
+                                      :class="'px-4 py-2 bg-yellow-400 text-white border rounded-md font-semibold text-xs'">
+                                    <i class="fa-solid fa-edit"></i>
+                                </Link>
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
-                                
+                                <DangerButton @click="$event => deleteEmployee(emp.id, emp.name)">
+                                    <i class="fa-solid fa-trash"></i>
+                                </DangerButton>
                             </td>
                         </tr>
                     </tbody>
