@@ -65,19 +65,19 @@
                     <tbody>
                         <tr v-for="dep, i in departments" :key="dep.id">
                             <td class="border border-gray-400 px-4 py-4">{{ (i+1) }}</td>
-                            <td class="border border-gray-400 px-4 py-4">{{ dep }}</td>
+                            <td class="border border-gray-400 px-4 py-4">{{ dep.name }}</td>
                             <td class="border border-gray-400 px-4 py-4">
                                 <!-- EDIT -->
-                                <!--<Link :href="route('departments.edit', dep.id)"
+                                <Link :href="route('departments.edit', dep.id)"
                                       :class="'px-4 py-2 bg-yellow-400 text-white border rounded-md font-semibold text-xs'">
                                     <i class="fa-solid fa-edit"></i>
-                                </Link>-->
+                                </Link>
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
                                 <!-- DELETE -->
-                                <!--<DangerButton @click="$event => deleteDepartment(dep.id, dep.name)">
+                                <DangerButton @click="$event => deleteDepartment(dep.id, dep.name)">
                                     <i class="fa-solid fa-trash"></i>
-                                </DangerButton>-->
+                                </DangerButton>
                             </td>
                         </tr>
                     </tbody>
