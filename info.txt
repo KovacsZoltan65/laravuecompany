@@ -1,5 +1,6 @@
 https://www.youtube.com/watch?v=sQwDLrleegA&ab_channel=ProgramandoconDanCruise
 47:02
+54:34
 
 composer create-project laravel/laravel --prefer-dist
 
