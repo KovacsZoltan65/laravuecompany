@@ -148,7 +148,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="emp, i in employees.data" :key="emp.id">
-                                <td class="border border-gray-400 px-2 py-2">{{ (i+1) }}</td>
+                                <td class="border border-gray-400 px-2 py-2">{{ emp.id }}</td>
                                 <td class="border border-gray-400 px-2 py-2">{{ emp.name }}</td>
                                 <td class="border border-gray-400 px-2 py-2">{{ emp.email }}</td>
                                 <td class="border border-gray-400 px-2 py-2">{{ emp.phone }}</td>
@@ -192,6 +192,7 @@
                         @page-changed="$event => onPageClick($event)"
                     ></VueTailwindPagination>
                 </div>
+
             </div>
             <Modal :show="modal" @close="closeModal">
                 <h2 class="p-3 text-lg font.medium text-hray-900">{{ title }}</h2>
@@ -245,6 +246,17 @@
                     <InputError :message="form.errors.department_id" class="mt-2"></InputError>
                 </div>
 
+                <div class="p-3 mt-6">
+                    <PrimaryButton :disabled="form.processing" @click="save">
+                        <i class="fa-solid fa-save"></i>&nbsp;Save
+                    </PrimaryButton>
+                </div>
+
+                <div class="p-3 mt-6 flex justify-end">
+                    <SecondaryButton class="ml-3" :disabled="form.processing" @click="closeModal">
+                        Cancel
+                    </SecondaryButton>
+                </div>
             </Modal>
         </template>
         
