@@ -112,12 +112,17 @@ class EmployeeController extends Controller
     }
     
     public function EmployeeByDepartment(){
-        $data = Employee::selectDB::raw('count(employees.id) as count, departments.name')
-            ->join('departments', 'departments.id', '=', 'employees.department_id')
+        \DB::enableQueryLog();
+        $data = Employee::select(DB::raw('count(employees.id) as count, departments.name'))
+            ->join('departments', 'departments.id', '=', 'department_id')
             ->groupBy('departments.name')
             ->get();
         
-        return Inertia::render('Employes/Graphic', ['data' => $data]);
+        $queries = \DB::getQueryLog();
+        \Log::info('$queries: ' . print_r($queries, true));
+        \DB::disableQueryLog();
+        
+        return Inertia::render('Employees/Graphic', ['data' => $data]);
     }
     
     public function reports(){
