@@ -17,8 +17,8 @@ class EmployeeController extends Controller
     {
         // Dolgozók lekérése
         //$employees = Employee::all();
-        $employees = Employee::with('department')->get();
-        /*
+        //$employees = Employee::with('department')->get();
+        
         $employees = Employee::select(
             'employees.id', 
             'employees.name', 
@@ -28,7 +28,7 @@ class EmployeeController extends Controller
             'departments.name as department')
             ->join('departments', 'departments.id', '=', 'employees.department_id')
             ->paginate(10);
-        */
+        
         // Irodák lekérése
         $departments = Department::all();
         //\Log::info(print_r($employees, true));

@@ -56,7 +56,7 @@
         }
     };
 
-    const clseModal = () => {
+    const closeModal = () => {
         modal.value = false;
         form.reset();
     };
@@ -152,7 +152,7 @@
                                 <td class="border border-gray-400 px-2 py-2">{{ emp.name }}</td>
                                 <td class="border border-gray-400 px-2 py-2">{{ emp.email }}</td>
                                 <td class="border border-gray-400 px-2 py-2">{{ emp.phone }}</td>
-                                <td class="border border-gray-400 px-2 py-2">{{ emp.email }}</td>
+                                <td class="border border-gray-400 px-2 py-2">{{ emp.department }}</td>
 
                                 <td class="border border-gray-400 px-2 py-2">
 
@@ -188,12 +188,64 @@
                     <VueTailwindPagination 
                         :current="employees.currentPage" 
                         :total="employees.total"
-                        :perPage="employees.perPage" 
-                        @pageChanged="$event => onPageClick($event)"
+                        :per-page="employees.perPage" 
+                        @page-changed="$event => onPageClick($event)"
                     ></VueTailwindPagination>
                 </div>
-
             </div>
+            <Modal :show="modal" @close="closeModal">
+                <h2 class="p-3 text-lg font.medium text-hray-900">{{ title }}</h2>
+
+                <div class="p-3">
+                    <InputLabel for="name" value="Name:"></InputLabel>
+                    <TextInput 
+                        id="name" 
+                        ref="nameInput" 
+                        v-model="form.name" 
+                        type="text" 
+                        class="mt-1 block w-3/4" 
+                        placeholder="Name"
+                    ></TextInput>
+                    <InputError :message="form.errors.name" class="mt-2"></InputError>
+                </div>
+
+                <div class="p-3">
+                    <InputLabel for="email" value="Email:"></InputLabel>
+                    <TextInput 
+                        id="email" 
+                        v-model="form.email" 
+                        type="text" 
+                        class="mt-1 block w-3/4" 
+                        placeholder="Email"
+                    ></TextInput>
+                    <InputError :message="form.errors.email" class="mt-2"></InputError>
+                </div>
+
+                <div class="p-3">
+                    <InputLabel for="phone" value="Phone:"></InputLabel>
+                    <TextInput 
+                        id="phone" 
+                        v-model="form.phone" 
+                        type="text" 
+                        class="mt-1 block w-3/4" 
+                        placeholder="Phone"
+                    ></TextInput>
+                    <InputError :message="form.errors.phone" class="mt-2"></InputError>
+                </div>
+
+                <div class="p-3">
+                    <InputLabel for="department_id" value="Department:"></InputLabel>
+                    <SelectInput 
+                        :options="departments" 
+                        id="department_id" 
+                        v-model="form.department_id" 
+                        type="text" 
+                        class="mt-1 block w-3/4" 
+                    ></SelectInput>
+                    <InputError :message="form.errors.department_id" class="mt-2"></InputError>
+                </div>
+
+            </Modal>
         </template>
         
     </AuthenticatedLayout>
